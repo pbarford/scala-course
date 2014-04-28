@@ -30,18 +30,27 @@ object Main {
    */
   def balance(chars: List[Char]): Boolean = {
 
-    def inner(i: Int=0, count: Int=0, isParenthesesOpen:Boolean = false) : Boolean = {
-      if (i == chars.length) count == 0
-      else {
-        chars(i) match {
-          case '(' => inner(i + 1, count + 1, true)
-          case ')' => if (!isParenthesesOpen) false else inner(i + 1, count - 1, (count - 1) != 0)
-          case _ => inner(i + 1, count, isParenthesesOpen)
+    def loop(c: Char, cl: List[Char], count: Int=0) : Boolean = {
+
+      def updateCount(c: Char, count: Int): Int = {
+        c match {
+          case '(' => count +1
+          case ')' => if(count==0) throw new Exception("invalid close bracket") else count - 1
+          case _ => count
         }
       }
+
+      try {
+        if (cl.isEmpty) updateCount(c, count) == 0
+        else loop(cl.head, cl.tail, updateCount(c, count))
+      }
+      catch {
+          case x: Exception => false
+      }
     }
-    inner()
+    loop(chars.head, chars.tail)
   }
+
 
   /**
    * Exercise 3
