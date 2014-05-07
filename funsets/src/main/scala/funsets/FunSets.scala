@@ -48,7 +48,7 @@ object FunSets {
   /**
    * The bounds for `forall` and `exists` are +/- 1000.
    */
-  val bound = 1000
+  val bound = 10
 
   /**
    * Returns whether all bounded integers within `s` satisfy `p`.
@@ -67,8 +67,9 @@ object FunSets {
    * that satisfies `p`.
    */
   def exists(s: Set, p: Int => Boolean): Boolean = {
+
     def iter(a: Int): Boolean = {
-      if(a == -bound) false
+      if(a < -bound) false
       else if(s(a) && p(a)) true
       else iter(a-1)
     }
