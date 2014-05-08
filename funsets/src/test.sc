@@ -4,6 +4,21 @@ object T {
   val b = 2
   def singletonFoo(elem: Int): Foo = n => n == elem
 
+  def union2(s: Foo, t: Foo): Foo = n => s(n) || t(n)
+
+  def forall2(s: Set, p: Int => Boolean): Boolean = {
+    def iter2(a: Int): Boolean = {
+      if (a == -bound) true
+      else if (s(a) && !p(a)) false
+      else iter2(a - 1)
+    }
+    iter2(bound)
+  }
+
+  def exists3(s: Set, p: Int => Boolean): Boolean = {
+    !forall2(s, (x:Int) => {println(x+"=" + p(x)); !p(x)})
+  }
+
   def exists2(s: Foo, p: Int => Boolean): Boolean = {
     def iter2(a: Int): Boolean = {
       if (a < -b) false
@@ -49,6 +64,21 @@ exists(s4, x => x > 8)
 forall(s4, x => x > 8)
 forall(s4, x => x < 8)
 T.printFoo(T.map2(T.singletonFoo(1), x => x +1))
+
+
+
+
+
+
+val f1 =T.union2(T.singletonFoo(1), T.singletonFoo(2))
+println(T.exists3(f1, x => x < 1))
+
+
+
+
+
+
+
 
 
 

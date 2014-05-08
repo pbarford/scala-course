@@ -24,6 +24,16 @@ class Rational(x: Int, y: Int) {
 }
 
 object Exercise {
+  val bound =4
+
+  def loop() = {
+    def iter(a: Int):Boolean = {
+      println(a)
+      if(a < -bound) true
+      else(iter(a - 1))
+    }
+    iter(bound)
+  }
 
   def main(args: Array[String]) {
     println(sum(x => x * x, 1, 5))
@@ -63,6 +73,8 @@ object Exercise {
     println(x + y - z)
     println(r1 + r2)
     println(y +  y)
+
+    loop()
 
   }
 

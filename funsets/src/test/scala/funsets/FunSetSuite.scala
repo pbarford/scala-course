@@ -134,6 +134,34 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("forall - check elements and check all satisfy the predicate") {
+    new TestSets {
+      val s4 = union(s1, union(s2, s3))
+      assert(forall(s4, x => x < 4))
+    }
+  }
+
+  test("forall - check elements and check none satisfy the predicate") {
+    new TestSets {
+      val s4 = union(s1, union(s2, s3))
+      assert(!forall(s4, x => x > 3))
+    }
+  }
+
+  test("exists - check elements and check some satisfy the predicate") {
+    new TestSets {
+      val s4 = union(s1, union(s2, s3))
+      assert(exists(s4, x => x < 2))
+    }
+  }
+
+  test("exists - check elements and check none satisfy the predicate") {
+    new TestSets {
+      val s4 = union(s1, union(s2, s3))
+      assert(!exists(s4, x => x > 10))
+    }
+  }
+
   test("filtering - return elements that are < 3") {
     new TestSets {
       val s4 = union(s1, union(s2, s3))
