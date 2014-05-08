@@ -101,7 +101,7 @@ class FunSetSuite extends FunSuite {
     }
   }
 
-  test("union contains all elements") {
+  test("union - join so Set contains all elements") {
     new TestSets {
       val s = union(s1, s2)
       assert(contains(s, 1), "Union 1")
@@ -110,7 +110,7 @@ class FunSetSuite extends FunSuite {
     }
   }
 
-  test("the set of all elements that are in both sets are returned") {
+  test("intersect - the set of all elements that are in both sets are returned") {
     new TestSets {
       val s4 = union(union(s1, s2), s3)
       val s5 = union(s1, s2)
@@ -122,7 +122,7 @@ class FunSetSuite extends FunSuite {
     }
   }
 
-  test("the difference of the two given setsis returned") {
+  test("diff - the difference of the two given sets is returned") {
     new TestSets {
       val s4 = union(union(s1, s2), s3)
       val s5 = union(s1, s2)
@@ -134,7 +134,7 @@ class FunSetSuite extends FunSuite {
     }
   }
 
-  test("return elements that are < 3 - filter") {
+  test("filtering - return elements that are < 3") {
     new TestSets {
       val s4 = union(s1, union(s2, s3))
       assert(contains(s4, 1), "contains 1")
@@ -148,7 +148,7 @@ class FunSetSuite extends FunSuite {
     }
   }
 
-  test("map applies function on all elements") {
+  test("map  - apply function on all elements") {
     new TestSets {
       val s = map(union(s2, s3), x=> x * 2)
       assert(contains(s, 4), "map f(1 * 2)")

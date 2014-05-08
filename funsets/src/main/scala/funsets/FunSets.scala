@@ -1,7 +1,5 @@
 package funsets
 
-import common._
-
 /**
  * 2. Purely Functional Sets.
  */
@@ -79,7 +77,7 @@ object FunSets {
   /**
    * Returns a set transformed by applying `f` to each element of `s`.
    */
-  def map(s: Set, f: Int => Int): Set = n => exists(s, z => f(z) == n)
+  def map(s: Set, f: Int => Int): Set = n => exists(s, n2 => f(n2) == n)
 
   /**
    * Displays the contents of a set
