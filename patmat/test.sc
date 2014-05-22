@@ -46,3 +46,6 @@ val leaflist = List(Leaf('e', 1), Leaf('t', 2), Leaf('x', 4))
 until(singleton, combine)(leaflist)
 
 createCodeTree(List('v', 'b', 'a', 'c', 'a', 't'))
+
+decodedSecret
+
