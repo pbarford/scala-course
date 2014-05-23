@@ -30,6 +30,10 @@ class HuffmanSuite extends FunSuite {
     assert(singleton(List()) == false)
   }
 
+  test("singleton of Nil list") {
+    assert(singleton(Nil) == false)
+  }
+
   test("string2chars(\"hello, world\")") {
     assert(string2Chars("hello, world") === List('h', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd'))
   }
