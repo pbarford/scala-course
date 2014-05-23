@@ -26,6 +26,10 @@ class HuffmanSuite extends FunSuite {
     }
   }
 
+  test("singleton of empty list") {
+    assert(singleton(List()) == false)
+  }
+
   test("string2chars(\"hello, world\")") {
     assert(string2Chars("hello, world") === List('h', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd'))
   }
@@ -38,7 +42,6 @@ class HuffmanSuite extends FunSuite {
   test("until list has only one CodeTree") {
     val leaflist = List(Leaf('e', 1), Leaf('t', 2), Leaf('x', 4))
     val res = until(singleton, combine)(leaflist)
-
     assert(res.size == 1)
   }
 

@@ -59,3 +59,6 @@ codeBits(convert(t2))('a')
 convert(frenchCode)
 
 quickEncode(frenchCode)(List('h', 'u', 'f', 'f', 'm', 'a', 'n', 'e', 's', 't', 'c', 'o', 'o', 'l'))
+
+makeOrderedLeafList(times("someText".toList))
+createCodeTree("someText".toList)
