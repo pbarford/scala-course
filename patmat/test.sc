@@ -49,3 +49,13 @@ createCodeTree(List('v', 'b', 'a', 'c', 'a', 't'))
 
 decodedSecret
 
+val t2 = Fork(Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5), Leaf('d',4), List('a','b','d'), 9)
+encodeBitsFor(t2, 'd', List())
+encode(t2)(List('b','a','d'))
+
+encode(frenchCode)(List('h', 'u', 'f', 'f', 'm', 'a', 'n', 'e', 's', 't', 'c', 'o', 'o', 'l'))
+
+codeBits(convert(t2))('a')
+convert(frenchCode)
+
+quickEncode(frenchCode)(List('h', 'u', 'f', 'f', 'm', 'a', 'n', 'e', 's', 't', 'c', 'o', 'o', 'l'))
