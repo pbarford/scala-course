@@ -33,3 +33,12 @@ def isPrime(n:Int):Boolean = {
   (2 until n).forall { d  => n % d != 0 }
 }
 isPrime(7)
+
+
+"test".map(x => (x,1)).groupBy{case(c,_) => c}.mapValues(_.size).toList.sortBy{case (c,_) => c}
+
+
+
+
+
+

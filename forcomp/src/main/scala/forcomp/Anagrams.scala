@@ -33,10 +33,11 @@ object Anagrams {
    *  Note: the uppercase and lowercase version of the character are treated as the
    *  same character, and are represented as a lowercase character in the occurrence list.
    */
-  def wordOccurrences(w: Word): Occurrences = ???
+  def wordOccurrences(w: Word): Occurrences = w.map(x => (x.toLower,1)).groupBy{case(c,_) => c}.mapValues(_.size).toList.sortBy{case (c,_) => c}
 
   /** Converts a sentence into its character occurrence list. */
-  def sentenceOccurrences(s: Sentence): Occurrences = ???
+  def sentenceOccurrences(s: Sentence): Occurrences =
+    s.map(t => wordOccurrences(t)).flatten.groupBy{case(c,_) => c}.map(ts => ts._2.reduceRight((x,y) => (x._1, x._2 + y._2))).toList.sortBy{case (c,_) => c}
 
   /** The `dictionaryByOccurrences` is a `Map` from different occurrences to a sequence of all
    *  the words that have that occurrence count.
