@@ -1,3 +1,5 @@
+"test".map(x => (x,1)).groupBy{case(c,_) => c}.mapValues(_.size).toList.sortBy{case (c,_) => c}
+
 def occurances(w: String):List[(Char, Int)] =
   w.map(x => (x,1)).groupBy{case(c,_) => c}.mapValues(_.size).toList.sortBy{case (c,_) => c}
 
