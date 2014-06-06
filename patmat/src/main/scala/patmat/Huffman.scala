@@ -79,17 +79,25 @@ object Huffman {
    *   }
    */
   def times(chars: List[Char]): List[(Char, Int)] = {
-    chars.map(x => (x,1)).groupBy(x => x._1).mapValues(v => v.size).toList
-    /*def innerT(chars: List[Char], res : List[(Char, Int)]) : List[(Char,Int)] = {
+    //chars.map(x => (x,1)).groupBy(x => x._1).mapValues(v => v.size).toList
+    def innerT(chars: List[Char], res : List[(Char, Int)]) : List[(Char,Int)] = {
+      chars match {
+        case List() => res
+        case char :: tail => {
+          val parts = chars.partition(c => c == chars.head)
+          innerT(tail, (chars.head, parts._1.length) :: res)
+        }
+      }
+      /*
       if(chars.isEmpty) res
       else {
-        val parts = chars.partition(c=> c == chars.head)
+        val parts = chars.partition(c => c == chars.head)
         innerT(parts._2, (chars.head, parts._1.length) :: res)
       }
+      */
     }
 
     innerT(chars, List())
-    */
   }
 
   /**
